@@ -14,6 +14,7 @@ interface CardProps {
 export function Card({ id }: CardProps) {
   const [profile, setProfile] = useState<UserProfile>();
   const [user, setUser] = useState<LanyardPresence>();
+  const [lastFetected, setLastFetched] = useState<number>(new Date().getTime());
 
   async function fetchProfileAndUser(id: string) {
     const user = await fetch(`https://api.lanyard.rest/v1/users/${id}`).then((r) => r.json());
@@ -26,6 +27,15 @@ export function Card({ id }: CardProps) {
   async function presenceChange(presence: LanyardPresence, id: string) {
     if (presence.discord_user.id == id) {
       setUser(presence);
+      let last: number;
+
+      setLastFetched((lastNumber) => {
+        last = lastNumber;
+        if (lastFetected - new Date().getTime() < 600000) return lastNumber;
+        return new Date().getTime();
+      });
+
+      if (last - new Date().getTime() < 600000) return;
 
       const profile = await fetch(`https://dcdn.dstn.to/profile/${id}`).then((r) => r.json());
       setProfile(profile);
