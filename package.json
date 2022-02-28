@@ -1,6 +1,6 @@
 {
   "name": "lanyard-card",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lanyard Card React Component",
   "homepage": "https://lanyard.dstn.to",
   "main": "dist/index.js",
@@ -12,7 +12,6 @@
     "watch": "nodemon"
   },
   "dependencies": {
-    "@dustinrouillard/lanyard-card": "file:.yalc/@dustinrouillard/lanyard-card",
     "color-thief-react": "^2.1.0",
     "react-responsive": "^9.0.0-beta.6",
     "rehype-external-links": "^1.0.0",
