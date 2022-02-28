@@ -1,0 +1,5 @@
+{
+  "watch": ["src"],
+  "ext": "ts,tsx",
+  "exec": "yarn build && yalc publish && (cd ../online-in-lanyard && yalc add @dustinrouillard/lanyard-card)"
+}
